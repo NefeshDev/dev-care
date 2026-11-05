@@ -40,6 +40,12 @@ class Tecnico {
     ) {
       throw new Error("Especialidade inválida. Deve ser uma string não vazia.");
     }
+    const especialidadesValidas = ['Hardware', 'Software', 'Redes'];
+    if (
+        !especialidadesValidas.includes(novaEspecialidade)
+    ) {
+        throw new Error(`Especialidade inválida. Deve ser uma das seguintes: ${especialidadesValidas.join(', ')}`);
+    }
     this.#especialidade = novaEspecialidade;
   }
 
