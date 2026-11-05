@@ -51,10 +51,11 @@ class Tecnico {
     }
 
     mostrarDados() {
-        console.log(`Matrícula: ${this.matricula}`);
-        console.log(`Nome: ${this.nome}`);
-        console.log(`Especialidade: ${this.especialidade}`);
-        console.log(`Valor Hora: R$${this.valorHora.toFixed(2)}`);
+        return `
+        - matrícula: ${this.matricula}
+        - nome: ${this.nome}
+        - especialidade: ${this.especialidade}
+        - valor Hora: R$${this.valorHora.toFixed(2)}`
     }
 
 }
