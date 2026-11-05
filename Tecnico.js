@@ -37,6 +37,11 @@ class Tecnico {
         if (typeof novaEspecialidade !== 'string' || novaEspecialidade.trim() === '') {
             throw new Error('Especialidade inválida. Deve ser uma string não vazia.');
         }
+        const especialidadesValidas = ['Hardware', 'Software', 'Redes'];
+        if (!especialidadesValidas.includes(novaEspecialidade)) {
+            throw new Error(`Especialidade inválida. Deve ser uma das seguintes: ${especialidadesValidas.join(', ')}`);
+        }
+        
         this.#especialidade = novaEspecialidade;
     }
 
@@ -52,10 +57,10 @@ class Tecnico {
 
     mostrarDados() {
         return `
-        - matrícula: ${this.matricula}
-        - nome: ${this.nome}
-        - especialidade: ${this.especialidade}
-        - valor Hora: R$${this.valorHora.toFixed(2)}`
+- matrícula: ${this.matricula}
+- nome: ${this.nome}
+- especialidade: ${this.especialidade}
+- valor Hora: R$${this.valorHora.toFixed(2)}`
     }
 
 }
