@@ -6,9 +6,9 @@ class TecnicoSoftware extends Tecnico {
     }
 
     mostrarDados() {
-        return `
-Técnico de Software:
-${super.mostrarDados()}`
+        console.log(`Técnico de Software:`)
+        super.mostrarDados()
+        console.log("--------------------") 
 
     }
 }

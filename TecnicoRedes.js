@@ -6,10 +6,9 @@ class TecnicoRedes extends Tecnico {
     }
 
     mostrarDados() {
-        return `
-Técnico de Redes:
-${super.mostrarDados()}`
-
+        console.log(`Técnico de Redes:`)
+        super.mostrarDados()
+        console.log("--------------------")
     }
 }
 

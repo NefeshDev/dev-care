@@ -63,7 +63,7 @@ class Tecnico {
     console.log(`Matrícula: ${this.matricula}`);
     console.log(`Nome: ${this.nome}`);
     console.log(`Especialidade: ${this.especialidade}`);
-    console.log(`Valor Hora: R$${this.valorHora.toFixed(2)}`);
+    console.log(`Valor Hora: R$: ${this.valorHora.toFixed(2)}`);
   }
 }
 
