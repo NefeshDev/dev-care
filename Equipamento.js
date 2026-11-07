@@ -59,5 +59,9 @@ class Equipamento {
         console.log(`Descrição: ${this.descricao}`)
         console.log(`Categoria: ${this.categoria}`)
     }
+
+   
 }
+
+export { Equipamento };
 
