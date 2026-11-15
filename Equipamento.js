@@ -1,13 +1,12 @@
 class Equipamento {
-    #statusValidos = ["retornado", "consertado", "em manutenção"];
-    #categoriasValidas = ["notebook", "computador"];
-    _status;
+    #altStatus = ["em manutenção", "consertado", "retornado"];
+    #categoriasValidas = ["notebook", "computador", "roteador"];
+    _status = "aguardando manutenção";
     _descricao;
     _categoria;
 
-    constructor(codigo, status, descricao, categoria) {
+    constructor(codigo, descricao, categoria) {
         this.codigo = codigo;
-        this.status = status;
         this.descricao = descricao;
         this.categoria = categoria;
     }
@@ -19,17 +18,17 @@ class Equipamento {
         if (!value) {
             throw new Error("Código é obrigatório");
         }
-        this._codigo = value;
+        return this._codigo = value;
     }
 
     get status() {
         return this._status;
     }
     set status(value) {
-        if (!this.#statusValidos.includes(value)) {
-            throw new Error(`Status inválido. Valores válidos: ${this.#statusValidos.join(", ")}`);
+        if (!this.#altStatus.includes(value)) {
+            throw new Error(`Status inválido. Valores válidos: ${this.#altStatus.join(", ")}`);
         }
-        this._status = value;
+        return this._status = value;
     }
 
     get descricao() {
@@ -39,7 +38,7 @@ class Equipamento {
         if (!value) {
             throw new Error("Descrição é obrigatória");
         }
-        this._descricao = value;
+        return this._descricao = value;
     }
 
     get categoria() {
@@ -49,19 +48,16 @@ class Equipamento {
         if (!this.#categoriasValidas.includes(value)) {
             throw new Error(`Categoria inválida. Valores válidos: ${this.#categoriasValidas.join(", ")}`);
         }
-        this._categoria = value;
+        return this._categoria = value;
     }
 
     mostrarDados(){
-        console.log("\n--- Equipamento ---")
-        console.log(`Código: ${this.codigo}`)
-        console.log(`Status: ${this.status}`)
-        console.log(`Descrição: ${this.descricao}`)
-        console.log(`Categoria: ${this.categoria}`)
+        console.log(`\n• Exibindo dados de Equipamento:
+- código: ${this.codigo}
+- status: ${this.status}
+- descrição: ${this.descricao}
+- categoria: ${this.categoria}`)
     }
-
-   
 }
 
 export { Equipamento };
-

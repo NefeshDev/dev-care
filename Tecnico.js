@@ -4,11 +4,13 @@ class Tecnico {
   #nome;
   #especialidade;
   #valorHora;
-  constructor(matricula, nome, especialidade, valorHora) {
+  #telefone;
+  constructor(matricula, nome, especialidade, valorHora, telefone) {
     this.matricula = matricula;
     this.nome = nome;
     this.especialidade = especialidade;
     this.valorHora = valorHora;
+    this.telefone = telefone;
   }
   get matricula() {
     return this.#matricula;
@@ -41,9 +43,7 @@ class Tecnico {
       throw new Error("Especialidade inválida. Deve ser uma string não vazia.");
     }
     const especialidadesValidas = ['Hardware', 'Software', 'Redes'];
-    if (
-        !especialidadesValidas.includes(novaEspecialidade)
-    ) {
+    if (!especialidadesValidas.includes(novaEspecialidade)) {
         throw new Error(`Especialidade inválida. Deve ser uma das seguintes: ${especialidadesValidas.join(', ')}`);
     }
     this.#especialidade = novaEspecialidade;
@@ -59,11 +59,32 @@ class Tecnico {
     this.#valorHora = novoValorHora;
   }
 
+  get telefone() {
+    return this.#telefone;
+  }
+  set telefone(novoTelefone) {
+    if (typeof novoTelefone !== "string" ||
+      (novoTelefone.trim().length !== 11 && novoTelefone.trim().length !== 13)) {
+        throw new Error(`// o código ${novoTelefone} é inválido.\nA operação de atribuição de número para ${this.nome} ${this.matricula} foi cancelada.`)
+      }
+      return this.#telefone = novoTelefone;
+  }
+
+  calcularPagamento(horasTrabalhadas) {
+    if (typeof horasTrabalhadas !== "number" ||
+        horasTrabalhadas <= 0 ||
+        Number.isNaN(horasTrabalhadas)) {
+          throw new Error(`// o método calcularPagamento() requer um número válido e maior que 0.`)
+        }
+    return (this.valorHora * horasTrabalhadas);
+  }
+
   mostrarDados() {
-    console.log(`Matrícula: ${this.matricula}`);
-    console.log(`Nome: ${this.nome}`);
-    console.log(`Especialidade: ${this.especialidade}`);
-    console.log(`Valor Hora: R$: ${this.valorHora.toFixed(2)}`);
+    console.log(`\n• Exibindo dados de Técnico:
+- matrícula: ${this.matricula}
+- nome: ${this.nome}
+- especialidade: ${this.especialidade}
+- valor da hora: R$: ${this.valorHora.toFixed(2)}`);
   }
 }
 

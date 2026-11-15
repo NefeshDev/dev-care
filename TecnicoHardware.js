@@ -1,16 +1,9 @@
 import { Tecnico } from "./Tecnico.js";
 
 class TecnicoHardware extends Tecnico {
-    constructor(matricula, nome, especialidade, valorHora) {
-        super(matricula, nome, especialidade, valorHora);
+    constructor(matricula, nome, valorHora, telefone) {
+        super(matricula, nome, "Hardware", valorHora, telefone);
     }
-
-    mostrarDados() {
-        console.log(`Técnico de Hardware:`)
-        super.mostrarDados()
-        console.log("--------------------")
-
-    }     
 }
 
 export { TecnicoHardware };
